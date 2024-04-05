@@ -106,5 +106,5 @@ function onButtonClick(e) {
 }
 
 const button = document.getElementById('save');
-button.addEventListener('onclick', onButtonClick);
+button.addEventListener('click', onButtonClick);
 ```
