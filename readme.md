@@ -1,5 +1,5 @@
-# Instruections
+# Instructions
 
 # [web toopics](/web)
 
-Here you can fin all instructions and excercises for this module.
+Here you can find all instructions and excercises for this module.
