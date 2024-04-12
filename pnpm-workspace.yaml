@@ -1,3 +1,4 @@
 packages:
   # all students repos
   - 'repos/*'
+  - web/*
