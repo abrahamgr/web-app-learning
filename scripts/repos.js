@@ -19,6 +19,9 @@ const repos = [
   'https://github.com/Felipegonac0/ActividadesWeb',
   'https://github.com/KrakenDominguezz/Actividades_Web',
   'https://github.com/EduardodeValle/01-basic-html',
+  'https://github.com/ChalkyMuffin/HTML-basico',
+  'https://github.com/rviz/WebAvanzado6to',
+  'https://github.com/TheNullPower/TC3005B-Web'
 ]
 
 module.exports = { repos }

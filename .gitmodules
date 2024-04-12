@@ -55,3 +55,12 @@
 [submodule "repos/EduardodeValle/01-basic-html"]
 	path = repos/EduardodeValle/01-basic-html
 	url = https://github.com/EduardodeValle/01-basic-html
+[submodule "repos/TheNullPower/TC3005B-Web"]
+	path = repos/TheNullPower/TC3005B-Web
+	url = https://github.com/TheNullPower/TC3005B-Web
+[submodule "repos/rviz/WebAvanzado6to"]
+	path = repos/rviz/WebAvanzado6to
+	url = https://github.com/rviz/WebAvanzado6to
+[submodule "repos/ChalkyMuffin/HTML-basico"]
+	path = repos/ChalkyMuffin/HTML-basico
+	url = https://github.com/ChalkyMuffin/HTML-basico
