@@ -15,13 +15,20 @@ const repos = [
   'https://github.com/Fausto420/A01412004moduloweb',
   // 'https://github.com/Cherry-Ayala/htmlbasico', // this is private
   'https://github.com/Lebrijay02/01-basic-html',
+  'https://github.com/Lebrijay02/04-nestjs-rick-and-morty',
   'https://github.com/GabrielRuizMiller/a00835179_html_basico',
+  'https://github.com/GabrielRuizMiller/03-profile',
+  'https://github.com/GabrielRuizMiller/04-nextjs-rick-and-morty',
   'https://github.com/Felipegonac0/ActividadesWeb',
   'https://github.com/KrakenDominguezz/Actividades_Web',
   'https://github.com/EduardodeValle/01-basic-html',
   'https://github.com/ChalkyMuffin/HTML-basico',
   'https://github.com/rviz/WebAvanzado6to',
-  'https://github.com/TheNullPower/TC3005B-Web'
-]
+  'https://github.com/TheNullPower/TC3005B-Web',
+  'https://github.com/Eugenio2002-tec/Eugenio-web',
+  'https://github.com/Hugoalv79/WizelineWebClass',
+  'https://github.com/lapl13/clase-web',
+  'https://github.com/Valenriquez/XploreTailwindCSS',
+];
 
-module.exports = { repos }
+module.exports = { repos };

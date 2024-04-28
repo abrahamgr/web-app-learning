@@ -64,3 +64,24 @@
 [submodule "repos/ChalkyMuffin/HTML-basico"]
 	path = repos/ChalkyMuffin/HTML-basico
 	url = https://github.com/ChalkyMuffin/HTML-basico
+[submodule "repos/Eugenio2002-tec/Eugenio-web"]
+	path = repos/Eugenio2002-tec/Eugenio-web
+	url = https://github.com/Eugenio2002-tec/Eugenio-web
+[submodule "repos/GabrielRuizMiller/03-profile"]
+	path = repos/GabrielRuizMiller/03-profile
+	url = https://github.com/GabrielRuizMiller/03-profile
+[submodule "repos/Hugoalv79/WizelineWebClass"]
+	path = repos/Hugoalv79/WizelineWebClass
+	url = https://github.com/Hugoalv79/WizelineWebClass
+[submodule "repos/lapl13/clase-web"]
+	path = repos/lapl13/clase-web
+	url = https://github.com/lapl13/clase-web
+[submodule "repos/Valenriquez/XploreTailwindCSS"]
+	path = repos/Valenriquez/XploreTailwindCSS
+	url = https://github.com/Valenriquez/XploreTailwindCSS
+[submodule "repos/Lebrijay02/04-nestjs-rick-and-morty"]
+	path = repos/Lebrijay02/04-nestjs-rick-and-morty
+	url = https://github.com/Lebrijay02/04-nestjs-rick-and-morty
+[submodule "repos/GabrielRuizMiller/04-nextjs-rick-and-morty"]
+	path = repos/GabrielRuizMiller/04-nextjs-rick-and-morty
+	url = https://github.com/GabrielRuizMiller/04-nextjs-rick-and-morty
