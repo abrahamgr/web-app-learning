@@ -1,4 +1,4 @@
 packages:
   # all students repos
-  - repos/*
+  - repos/**/**/*
   - web/*
