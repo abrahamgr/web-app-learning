@@ -18,3 +18,14 @@ export async function getAllCharacters(): Promise<Character[]> {
   const result: Result<Character[]> = await response.json()
   return result.results ?? []
 }
+
+export async function getMultipleCharacters(
+  ids: number[],
+): Promise<Character[]> {
+  if (!ids) return []
+  const response = await fetch(
+    new URL(`${endpoints.getCharacter}/${ids.join(',')}`, clientConfig.apiHost),
+  )
+  const result: Character[] = await response.json()
+  return result ?? []
+}

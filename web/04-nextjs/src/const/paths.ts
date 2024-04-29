@@ -1,6 +1,6 @@
 export const paths = {
   serverComponent: '/server-character',
   clientComponent: '/client-character',
-  favoriteCharacter: '/favorite-character',
+  favoriteCharacter: '/favorites',
   allCharacters: '/characters',
 }

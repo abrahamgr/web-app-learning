@@ -4,20 +4,19 @@ import Image from 'next/image'
 import { Character } from '@/types/Character'
 import starIcon from '@/icons/star.svg'
 import starFilledIcon from '@/icons/star-filled.svg'
+import { setFavoriteCharacterAction } from '@/actions/character'
 
 interface CharacterComponentProps {
   character: Character
   isFavorite?: boolean
-  onFavorite: (characterId: number) => void
 }
 
 export function CharacterComponent({
   character: { name, image, status, gender, id },
   isFavorite,
-  onFavorite,
 }: CharacterComponentProps) {
   return (
-    <div className='flex w-[250px] rounded-md bg-slate-700'>
+    <div className='flex h-[100px] w-[250px] rounded-md bg-slate-700'>
       <Image
         src={image}
         alt='character'
@@ -33,7 +32,7 @@ export function CharacterComponent({
           height={15}
           alt={`${isFavorite ? 'unmark' : 'mark'}-favorite`}
           className='cursor-pointer self-end'
-          onClick={() => onFavorite(id)}
+          onClick={() => setFavoriteCharacterAction(id)}
         />
         <span>{name}</span>
         <span>

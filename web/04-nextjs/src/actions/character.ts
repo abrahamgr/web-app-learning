@@ -1,16 +1,16 @@
 'use server'
 
 import { FAVORITE_CHARACTER_KEY } from '@/const/cookies'
+import { getCurrentFavoriteIds } from '@/helpers/characters'
 import { setCookie } from '@/helpers/cookies'
-import { cookies } from 'next/headers'
 
 export async function setFavoriteCharacterAction(
   characterId: number,
 ): Promise<void> {
-  console.log('setting favorite character', characterId)
-  const cookieStore = cookies()
-  const currentFavoriteId = cookieStore.get(FAVORITE_CHARACTER_KEY)?.value
-  if (currentFavoriteId === `${characterId}`)
-    cookieStore.delete(FAVORITE_CHARACTER_KEY)
-  else setCookie(FAVORITE_CHARACTER_KEY, `${characterId}`)
+  const favoriteIds = getCurrentFavoriteIds()
+  let newFavorites: number[] = []
+  if (favoriteIds.includes(characterId))
+    newFavorites = favoriteIds.filter((id) => id !== characterId)
+  else newFavorites = [...favoriteIds, characterId]
+  setCookie(FAVORITE_CHARACTER_KEY, newFavorites.join(','))
 }
