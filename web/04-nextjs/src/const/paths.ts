@@ -3,4 +3,5 @@ export const paths = {
   clientComponent: '/client-character',
   favoriteCharacter: '/favorites',
   allCharacters: '/characters',
+  info: '/info',
 }

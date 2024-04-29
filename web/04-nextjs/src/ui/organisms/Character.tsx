@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Character } from '@/types/Character'
+import { Character } from '@/types/character'
 import starIcon from '@/icons/star.svg'
 import starFilledIcon from '@/icons/star-filled.svg'
 import { setFavoriteCharacterAction } from '@/actions/character'

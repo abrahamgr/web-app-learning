@@ -1,15 +1,44 @@
 import { paths } from '@/const/paths'
 import Link from 'next/link'
 
+interface MenuLink {
+  text: string
+  url: string
+}
+
+const links: MenuLink[] = [
+  {
+    text: 'Server Component',
+    url: paths.serverComponent,
+  },
+  {
+    text: 'Client Component',
+    url: paths.clientComponent,
+  },
+  {
+    text: 'Characters',
+    url: paths.allCharacters,
+  },
+  {
+    text: 'Info',
+    url: paths.info,
+  },
+]
+
 export default function Home() {
   return (
-    <div>
-      <p>Page</p>
-      <Link href={paths.serverComponent}>Server Component</Link>
+    <div className='flex h-screen flex-col justify-center'>
+      <ul className='list-none'>
+        {links.map((item) => (
+          <li key={item.text}>
+            <Link href={item.url} className='hover:underline'>
+              {item.text}
+            </Link>
+          </li>
+        ))}
+      </ul>
       <br />
-      <Link href={paths.clientComponent}>Client Component</Link>
       <br />
-      <Link href={paths.allCharacters}>Characters</Link>
     </div>
   )
 }

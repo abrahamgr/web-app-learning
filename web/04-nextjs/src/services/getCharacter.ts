@@ -1,7 +1,7 @@
 import { clientConfig } from '@/const/clientConfig'
-import { Character } from '@/types/Character'
+import { Character } from '@/types/character'
 import { endpoints } from '@/const/endpoints'
-import { Result } from '@/types/Result'
+import { Result } from '@/types/result'
 
 export async function getCharacter(id: number): Promise<Character> {
   const response = await fetch(
@@ -26,6 +26,10 @@ export async function getMultipleCharacters(
   const response = await fetch(
     new URL(`${endpoints.getCharacter}/${ids.join(',')}`, clientConfig.apiHost),
   )
+  if (ids.length === 1) {
+    const singleCharacter: Character = await response.json()
+    return singleCharacter ? [singleCharacter] : []
+  }
   const result: Character[] = await response.json()
   return result ?? []
 }

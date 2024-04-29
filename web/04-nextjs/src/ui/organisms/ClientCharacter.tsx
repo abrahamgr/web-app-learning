@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { CharacterComponent } from './Character'
-import { Character } from '@/types/Character'
+import { Character } from '@/types/character'
 import { getCharacter } from '@/services/getCharacter'
 import { setFavoriteCharacterAction } from '@/actions/character'
 
