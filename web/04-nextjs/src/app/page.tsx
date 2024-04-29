@@ -8,6 +8,8 @@ export default function Home() {
       <Link href={paths.serverComponent}>Server Component</Link>
       <br />
       <Link href={paths.clientComponent}>Client Component</Link>
+      <br />
+      <Link href={paths.allCharacters}>Characters</Link>
     </div>
   )
 }
