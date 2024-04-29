@@ -13,7 +13,7 @@ const repos = [
   'https://github.com/CaroGzzLeal/TC3005B_Web',
   'https://github.com/JoseCSG/html_clases',
   'https://github.com/Fausto420/A01412004moduloweb',
-  // 'https://github.com/Cherry-Ayala/htmlbasico', // this is private
+  'https://github.com/Cherry-Ayala/WebTC3005B.101',
   'https://github.com/Lebrijay02/01-basic-html',
   'https://github.com/Lebrijay02/04-nestjs-rick-and-morty',
   'https://github.com/GabrielRuizMiller/a00835179_html_basico',
@@ -29,6 +29,8 @@ const repos = [
   'https://github.com/Hugoalv79/WizelineWebClass',
   'https://github.com/lapl13/clase-web',
   'https://github.com/Valenriquez/XploreTailwindCSS',
+  'https://github.com/SofiRegiM/rick-morty',
+  'https://github.com/AlexMendozaPrado/04-nestjs-rick-and-morty',
 ];
 
 module.exports = { repos };

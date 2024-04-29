@@ -85,3 +85,12 @@
 [submodule "repos/GabrielRuizMiller/04-nextjs-rick-and-morty"]
 	path = repos/GabrielRuizMiller/04-nextjs-rick-and-morty
 	url = https://github.com/GabrielRuizMiller/04-nextjs-rick-and-morty
+[submodule "repos/Cherry-Ayala/WebTC3005B.101"]
+	path = repos/Cherry-Ayala/WebTC3005B.101
+	url = https://github.com/Cherry-Ayala/WebTC3005B.101
+[submodule "repos/SofiRegiM/rick-morty"]
+	path = repos/SofiRegiM/rick-morty
+	url = https://github.com/SofiRegiM/rick-morty
+[submodule "repos/AlexMendozaPrado/04-nestjs-rick-and-morty"]
+	path = repos/AlexMendozaPrado/04-nestjs-rick-and-morty
+	url = https://github.com/AlexMendozaPrado/04-nestjs-rick-and-morty
