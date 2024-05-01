@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { CharacterComponent } from './Character'
 import { Character } from '@/types/character'
 import { getCharacter } from '@/services/getCharacter'
-import { setFavoriteCharacterAction } from '@/actions/character'
 
 export function ClientCharacter() {
   const [character, setCharacter] = useState<Character | undefined>(undefined)
@@ -18,10 +17,5 @@ export function ClientCharacter() {
   }, [])
 
   if (!character) return null
-  return (
-    <CharacterComponent
-      character={character}
-      onFavorite={setFavoriteCharacterAction}
-    />
-  )
+  return <CharacterComponent character={character} />
 }

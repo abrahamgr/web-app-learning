@@ -4,4 +4,5 @@ export const endpoints = {
 
 export const internalEndpoints = {
   setFavoriteCharacter: '/api/character',
+  giveFeedback: '/api/feedback',
 }

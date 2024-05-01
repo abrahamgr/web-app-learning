@@ -23,6 +23,10 @@ const links: MenuLink[] = [
     text: 'Info',
     url: paths.info,
   },
+  {
+    text: 'About',
+    url: paths.about,
+  },
 ]
 
 export default function Home() {
