@@ -71,7 +71,10 @@ Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vs
 Install the following packages
 
 ```bash
+# prettier + tailwing
 npm add -D prettier eslint-config-prettier eslint-plugin-prettier prettier-plugin-tailwindcss
+# typescript + accesibility
+npm add -D @typescript-eslint/eslint-plugin eslint-plugin-jsx-a11y
 ```
 
 Add prettier config `prettier.config.js` at the root of your project
@@ -88,12 +91,20 @@ const config = {
 export default config
 ```
 
-Add `plugin:prettier/recommended` to the extends section on `.eslintrc.json`
+Add the following configuration to `.eslintrc.json`
 
 ```json
 // .eslintrc.json
 {
-  "extends": ["next/core-web-vitals", "plugin:prettier/recommended", "next"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/strict",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "next"
+  ],
+  "plugins": ["@typescript-eslint", "jsx-a11y"],
   "rules": {}
 }
 ```
@@ -113,4 +124,105 @@ Add the scipts below to the `package.json` in the `scripts` section
 This plugin provides some rules specific for Next.js, pelase take a look at them
 [https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-plugin](https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-plugin)
 
-###
+## Lint staged + Husky hooks
+
+This will help us to format code when making commits
+
+### Husky
+
+Install [Husky](https://typicode.github.io/husky/)
+
+```bash
+npm add -D husky
+```
+
+Modify a script to the `package.json` in `scripts` section to enable hooks and avoid and error when installeing packages on CI/CD
+
+```json
+  // adjust your folder of your project
+  "prepare": "cd .. && husky 04-nestjs-rick-and-morty/.husky || true"
+```
+
+Run the command we just created to initialize Husky properly
+
+```bash
+npm run prepare
+```
+
+Go to the file created at `.husky/pre-commit` and add the content based on your project (only one option).
+
+```bash
+# use this if your project is at the root of your repo
+npx lint-staged
+# use this if your project inside a folder of your repo
+cd 04-nestjs-rick-and-morty && npx lint-staged
+```
+
+### lint-staged
+
+Install package
+
+```bash
+npm add -D lint-staged
+```
+
+Add lint-staged configuration
+
+```js
+// .lintstagedrc.mjs
+import path from 'path'
+
+/**
+ * Generates command to run 'next lint' properly
+ * @param {*} filenames
+ * @returns command
+ */
+const nextEslintCommand = (filenames) =>
+  `next lint --fix --file ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`
+
+export default {
+  '*.{js,ts,tsx}': [nextEslintCommand],
+  '*.{json,css}': 'prettier -w',
+}
+```
+
+You can run multiple linters by extensions and multiple commands, please take a look at [https://github.com/lint-staged/lint-staged?tab=readme-ov-file#task-concurrency](https://github.com/lint-staged/lint-staged?tab=readme-ov-file#task-concurrency)
+
+To test Husky and lint-staged add the following to `.husky/pre-commit` hook only for testing purposed, then you can remove it and commit your changes.
+
+```bash
+lint-staged
+## this will prevent to commmit your changes for testing purposes
+exit 1
+```
+
+## Fix your code
+
+Now everthing is setup you can run `npm run lint` to view all changes you need to attend. Some of them can be fixed automatically by running `npm run lint:fix`, go ahead and run these commands in order to have clean code and then fix manually rest of errors.
+
+```bash
+# first take a look at the errors/warnings
+npm run lint
+# fix some of them, not all can be fixed
+npm run lint:fix
+```
+
+Then you are ready to commit and push your changes.
+
+## ESLint plugin Docs
+
+[ESLint](https://eslint.org/docs/v8.x/)
+
+[Prettier](https://prettier.io/)
+
+[eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+
+[eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
+
+[prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+
+[@typescript-eslint/eslint-plugin](https://typescript-eslint.io/)
+
+[eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)

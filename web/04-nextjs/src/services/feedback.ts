@@ -5,7 +5,7 @@ export async function sendFeedback(
   payload: FeedbackPayload,
 ): Promise<FeedbackPayload> {
   const response = await fetch(
-    new URL(internalEndpoints.giveFeedback, location.origin),
+    new URL(internalEndpoints.giveFeedback, window.location.origin),
     {
       method: 'post',
       body: JSON.stringify(payload),

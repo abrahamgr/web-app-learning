@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { paths } from './const/paths'
 
 export function middleware(request: NextRequest) {
   const {

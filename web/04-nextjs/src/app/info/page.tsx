@@ -1,5 +1,4 @@
 import { PageProps } from '@/types/page'
-import { headers } from 'next/headers'
 
 export default function InfoPage({ searchParams }: PageProps) {
   return (
