@@ -2,10 +2,14 @@ import { FAVORITE_CHARACTER_KEY } from '@/const/cookies'
 import { setCookie } from '@/helpers/cookies'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 
-export interface SetFavoriteCharacterRequest {
-  characterId: number
-}
+const setFavoriteCharacterSchema = z.object({
+  characterId: z.number(),
+})
+export type SetFavoriteCharacterRequest = z.infer<
+  typeof setFavoriteCharacterSchema
+>
 
 export async function POST(request: NextRequest) {
   const payload: SetFavoriteCharacterRequest = await request.json()

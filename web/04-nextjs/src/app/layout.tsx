@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { PropsWithChildren } from 'react'
 import { Inter } from 'next/font/google'
 import { PageTemplate } from '@/ui/organisms/PageTemplate'
 import './globals.css'
@@ -9,11 +10,7 @@ export const metadata: Metadata = {
   title: 'Rick & Morty',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang='en'>
       <body
