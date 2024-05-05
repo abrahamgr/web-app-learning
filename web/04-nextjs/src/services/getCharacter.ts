@@ -11,12 +11,15 @@ export async function getCharacter(id: number): Promise<Character> {
   return character
 }
 
-export async function getAllCharacters(): Promise<Character[]> {
+export async function getAllCharacters<T>(page: string): Promise<Result<T>> {
   const response = await fetch(
-    new URL(endpoints.getCharacter, clientConfig.apiHost),
+    new URL(
+      `${endpoints.getCharacter}${page === '1' ? '' : `?page=${page}`}`,
+      clientConfig.apiHost,
+    ),
   )
-  const result: Result<Character[]> = await response.json()
-  return result.results ?? []
+  const result: Result<T> = await response.json()
+  return result
 }
 
 export async function getMultipleCharacters(

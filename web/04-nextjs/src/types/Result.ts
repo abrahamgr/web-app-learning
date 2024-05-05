@@ -2,7 +2,7 @@ export interface Result<T> {
   /**
    * The API will automatically paginate the responses. You will receive up to `20` documents per page.
    */
-  info?: {
+  info: {
     /** The length of the response */
     count: number
     /** The amount of pages */
@@ -12,5 +12,5 @@ export interface Result<T> {
     /** Link to the previous page (if it exists) */
     prev: string | null
   }
-  results?: T
+  results: T
 }

@@ -8,7 +8,7 @@ export function Button({
   return (
     <button
       {...props}
-      className={`rounded-lg bg-slate-600 px-4 py-2 hover:bg-slate-400 ${className ?? ''}`}
+      className={`lastPage rounded-lg bg-slate-600 px-4 py-2 hover:bg-slate-400 disabled:bg-slate-700 disabled:hover:bg-slate-700 ${className ?? ''}`}
     />
   )
 }
