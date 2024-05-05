@@ -4,3 +4,7 @@ node_modules
 # student repos
 repos
 *.diff
+
+# vitest
+coverage
+html
