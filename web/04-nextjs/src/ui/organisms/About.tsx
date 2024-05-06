@@ -26,12 +26,10 @@ export function About() {
       setError(false)
       sendFeedback(payload)
         .then(() => {
-          console.log('success')
           setSuccess(true)
         })
         .catch(() => {
           setError(true)
-          console.error('failed')
         })
     })
   }
