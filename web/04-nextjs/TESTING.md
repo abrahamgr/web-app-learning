@@ -8,10 +8,10 @@ Install VSCode extension
 
 [Vitest extension](https://marketplace.visualstudio.com/items?itemName=vitest.explorer)
 
-Install [vitest](https://vitest.dev/) for testing and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) to test React components.
+Install [vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) to test React components.
 
 ```bash
-npm add -D vitest @vitejs/plugin-react @vitest/coverage-v8 @testing-library/react @testing-library/user-event @testing-library/jest-dom jsdom
+npm add -D vitest @vitejs/plugin-react @vitest/coverage-v8 @testing-library/react @testing-library/user-event @testing-library/jest-dom eslint-plugin-testing-library jsdom
 # if you want to use HTML reporter
 npm add -D @vitest/ui
 ```
@@ -19,6 +19,30 @@ npm add -D @vitest/ui
 ```json
   "test": "vitest",
   "test:ci": "vitest run"
+```
+
+Add ESlint plugin for Testing Library
+
+```json
+  // .eslintrc.json
+  // add to the existing plugins
+  "plugins": [
+    // ..your other configs
+    "testing-library"
+    ],
+  // use recommended configuration by adding
+  "extends": [
+    // ..your other configs
+    "plugin:testing-library/react"
+    // ..your other configs
+    ],
+```
+
+Use the recommended configuration
+
+```json
+  //.eslintrc.json
+
 ```
 
 Add `coverage and html` to your `.gitignore`
@@ -33,6 +57,13 @@ Add `setupTests.ts` to setup test utilities and global functions/mocks, if you h
 ```typescript
 // extend matchers
 import '@testing-library/jest-dom/vitest'
+```
+
+Add vitest types on `tsconfig`:
+
+```json
+  // this will allow you to avoid importing vitest functions on each test
+  "types": ["vitest/globals"]
 ```
 
 Add `vitest.config.ts`

@@ -1,4 +1,3 @@
-import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { About } from './About'
 import userEvent from '@testing-library/user-event'
@@ -14,10 +13,9 @@ test('render About', () => {
   expect(screen.getAllByRole('textbox').length).toBe(3)
 })
 
-const user = userEvent.setup()
 async function typeOnInput(name: string, value: string) {
   const input = screen.getByRole('textbox', { name })
-  await user.type(input, value)
+  await userEvent.type(input, value)
   return input
 }
 
@@ -29,7 +27,7 @@ test('submit success', async () => {
   expect(nameInput).toBeRequired()
   expect(subjectInput).toBeRequired()
   expect(commentsInput).not.toBeRequired()
-  await user.click(screen.getByText('Submit'))
+  await userEvent.click(screen.getByText('Submit'))
   expect(await screen.findByText('Form submitted')).toBeInTheDocument()
 })
 
@@ -43,6 +41,6 @@ test('submit failed', async () => {
   expect(nameInput).toBeRequired()
   expect(subjectInput).toBeRequired()
   expect(commentsInput).not.toBeRequired()
-  await user.click(screen.getByText('Submit'))
+  await userEvent.click(screen.getByText('Submit'))
   expect(await screen.findByText('Something went wrong')).toBeInTheDocument()
 })
