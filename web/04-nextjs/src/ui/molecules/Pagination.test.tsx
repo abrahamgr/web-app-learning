@@ -5,8 +5,11 @@ import { Pagination } from './Pagination'
 // mock function to make an assert
 const mockPush = vi.fn()
 // mock library that depends on other functionality
-vi.mock('next/navigation', () => {
+vi.mock('next/navigation', async () => {
+  const actual =
+    await vi.importActual<typeof import('next/navigation')>('next/navigation')
   return {
+    ...actual,
     // defined imports used in component
     useRouter: () => ({
       // assign mocked function to function used

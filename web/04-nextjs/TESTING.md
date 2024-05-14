@@ -18,12 +18,12 @@ npm add -D @vitest/ui
 
 ```json
   "test": "vitest",
-  "test:ci": "vitest run"
+  "test:ci": "vitest run --coverage"
 ```
 
 Add ESlint plugin for Testing Library
 
-```json
+```js
   // .eslintrc.json
   // add to the existing plugins
   "plugins": [
@@ -40,9 +40,14 @@ Add ESlint plugin for Testing Library
 
 Use the recommended configuration
 
-```json
+```js
   //.eslintrc.json
-
+  // add to extends section
+  "extends": [
+    // ..other config
+    "plugin:testing-library/react"
+    // ..other config
+  ],
 ```
 
 Add `coverage and html` to your `.gitignore`
@@ -52,7 +57,7 @@ coverage
 html
 ```
 
-Add `setupTests.ts` to setup test utilities and global functions/mocks, if you have any kind of providers please take a look at this [example](https://testing-library.com/docs/react-testing-library/setup#custom-render)
+Add `setupTests.ts` file to setup test utilities and global functions/mocks, if you have any kind of providers please take a look at this [example](https://testing-library.com/docs/react-testing-library/setup#custom-render)
 
 ```typescript
 // extend matchers
@@ -78,11 +83,22 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-    // specify where to find tests
-    include: ['src/**/*.test.{ts,tsx}'],
     setupFiles: 'src/helpers/setupTests.ts',
-    // environment to mount DOM
     environment: 'jsdom',
+    coverage: {
+      // files to include in metrics for coverage
+      // add your folders, adjust based on yor structure
+      include: ['src/components/**/*.{ts,tsx}', 'src/helpers/**/*.{ts,tsx}'],
+      // if you want to exclude some files
+      exclude: [],
+      reporter: ['html', 'text-summary'],
+      thresholds: {
+        functions: 50,
+        lines: 50,
+        branches: 50,
+        statements: 50,
+      },
+    },
   },
   resolve: {
     alias: {
@@ -93,7 +109,7 @@ export default defineConfig({
 })
 ```
 
-Then you can add a test.
+Then you can add a test, example:
 
 ```typescript
 // import assert methods

@@ -11,7 +11,8 @@
     "lint:fix": "next lint --fix",
     "prepare": "cd ../.. && husky web/04-nextjs/.husky || true",
     "test": "vitest",
-    "test:ci": "vitest run --coverage"
+    "test:ci": "vitest run --coverage",
+    "test:ui": "vitest --ui --coverage.enabled=true"
   },
   "dependencies": {
     "next": "14.2.2",
