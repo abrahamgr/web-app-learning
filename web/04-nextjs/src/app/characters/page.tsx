@@ -13,7 +13,7 @@ export default async function CharactersPage({ searchParams }: PageProps) {
     results: characters,
     info: { pages },
   } = await getAllCharacters<Character[]>(currentPage)
-  const favoriteIds = getCurrentFavoriteIds()
+  const favoriteIds = await getCurrentFavoriteIds()
   return (
     <>
       <Link href={paths.favoriteCharacter}>Favorites</Link>

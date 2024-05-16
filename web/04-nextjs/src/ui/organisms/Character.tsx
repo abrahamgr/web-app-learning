@@ -1,10 +1,11 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { Character } from '@/types/character'
 import starIcon from '@/icons/star.svg'
 import starFilledIcon from '@/icons/star-filled.svg'
-import { setFavoriteCharacterAction } from '@/actions/character'
+import { setFavoriteAction } from '@/actions/favorites'
 
 interface CharacterComponentProps {
   character: Character
@@ -15,6 +16,13 @@ export function CharacterComponent({
   character: { name, image, status, gender, id },
   isFavorite,
 }: CharacterComponentProps) {
+  const router = useRouter()
+
+  const onFavorite = async (id: number) => {
+    await setFavoriteAction(id)
+    router.refresh()
+  }
+
   return (
     <div className='flex h-[100px] w-[250px] rounded-md bg-slate-700'>
       <Image
@@ -32,7 +40,7 @@ export function CharacterComponent({
           height={15}
           alt={`${isFavorite ? 'unmark' : 'mark'}-favorite`}
           className='cursor-pointer self-end'
-          onClick={() => setFavoriteCharacterAction(id)}
+          onClick={() => onFavorite(id)}
         />
         <span>{name}</span>
         <span>
