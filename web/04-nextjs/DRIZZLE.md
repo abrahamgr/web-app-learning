@@ -117,3 +117,10 @@ npm run db:migrate
 ```
 
 # Vercel
+
+Install depdencies
+
+```bash
+npm add drizzle-orm @vercel/postgres
+npm add -D drizzle-kit
+```

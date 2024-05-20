@@ -8,3 +8,5 @@ repos
 # vitest
 coverage
 html
+.vercel
+.turbo

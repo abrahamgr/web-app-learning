@@ -115,7 +115,7 @@ Add the scipts below to the `package.json` in the `scripts` section
 // .eslintrc.json
 {
   "lint": "next lint",
-  "lint:": "next lint --fix"
+  "lint:fix": "next lint --fix"
 }
 ```
 
