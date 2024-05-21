@@ -3,6 +3,7 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
 on:
   push:
     branches: main
@@ -42,4 +43,4 @@ jobs:
         run: vercel deploy --prebuilt --prod --token=${{ env.VERCEL_TOKEN }}
 
       - name: Migrate DB
-        run: pnpm --filter=./web/04-nextjs run db:migrate
+        run: pnpm --filter=./web/04-nextjs run db:migrate --config=drizzle-vercel.config.ts
