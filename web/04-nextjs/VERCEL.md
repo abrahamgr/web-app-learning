@@ -25,12 +25,12 @@ vercel project add rick-morty
 
 Now go to [`Vercel`](https://vercel.com/), to create a Database using Postgress:
 
-- Click on your project created
+- Click on **your project** created
 - Click on `Create Database`
 - Select `Postgress`
 - Enter the name and submit
 
-# Link project
+## Link project
 
 Now we have created a database and project link our local project
 
@@ -92,5 +92,32 @@ import { drizzle as drizzleVercel } from 'drizzle-orm/vercel-postgres'
 // replace db with, this way we use local DB for DEV and Vercel DB in PROD
 export const db = isProd ? drizzleVercel(sql) : drizzleNode(client)
 ```
+
+### DB migrations
+
+**Note**: This is optional in case you want to hanle migrations on Vercel, otherwise you must generate the schema on the DB manually and then add the connection as `secret`.
+
+To handle migrations you need run the followig commands:
+
+- `npm run db:generate` to generate initial schema or when you modify existing schema, it will generate scripts to handle those changes.
+- `npm rnu db:migrate` to execute migration scripts generated previously, usuatio called when schema was created for the first time or when there are changes in DB schema.
+
+Add the following file to handle migrations on Vercel
+
+```typescript
+// drizzle-vercel.config.ts
+import { defineConfig } from 'drizzle-kit'
+
+export default defineConfig({
+  schema: './src/db/schema.ts',
+  dialect: 'postgresql',
+  dbCredentials: {
+    url: process.env.POSTGRES_URL as string,
+  },
+})
+```
+
+Go to Vercel a select you DB created or the one you want to use, click on the `psql` tab, then click on `show secret` and copy the value (starts with `postgres://default:`).
+Then go to GihHub on your repository and add a new secret named `POSTGRES_URL` with the value of your connnection.
 
 ## GitHub Actions

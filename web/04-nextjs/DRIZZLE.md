@@ -31,7 +31,7 @@ export const dbConfig: DBConfig = {
 }
 ```
 
-Add you env variables
+Add you env variables on `.env`
 
 ```env
 # DB
@@ -65,6 +65,7 @@ Create your initial schema
 
 ```typescript
 // src/db/schema.ts
+// adjust schema based on your requirements
 import { pgTable, serial, integer, timestamp } from 'drizzle-orm/pg-core'
 
 export const favorites = pgTable('favorites', {
@@ -112,7 +113,6 @@ Generate migration and push changes to DB.
 ```bash
 # generate schema
 npm run db:generate
-# push changes
+# push changes to DB
 npm run db:migrate
-
 ```
