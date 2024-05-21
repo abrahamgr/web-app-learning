@@ -13,6 +13,7 @@ npm add -D drizzle-kit @types/pg
 Create dbConfig.ts with .env variables
 
 ```typescript
+// src/const/dbConfig.ts
 interface DBConfig {
   port: number
   host: string
@@ -114,13 +115,4 @@ npm run db:generate
 # push changes
 npm run db:migrate
 
-```
-
-# Vercel
-
-Install depdencies
-
-```bash
-npm add drizzle-orm @vercel/postgres
-npm add -D drizzle-kit
 ```

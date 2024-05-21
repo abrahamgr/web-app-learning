@@ -64,3 +64,33 @@ This value from `.vercel/project.json` on `projectId` property.
 
 You need to go to your [Account on Vercel](https://vercel.com/account), click on `Tokens`, enter a token name like: `GitHub Action Rick and Morty`, select scope like `Personal` and expiration date you want (if expiration is different from `No Expiration` make sure you rotate your token) and click on `Generate`.
 Copy the value and save somewhere else becayse this is not visible anymore, use this value to generate the secret on GitHub.
+
+## Drizzle integration
+
+Install depdencies
+
+```bash
+npm add drizzle-orm @vercel/postgres
+npm add -D drizzle-kit
+```
+
+Create a constant to identify if app is running on DEV or PROD
+
+```typescript
+// src/const/config.ts
+export const isProd = (process.env.NODE_ENV as string) === 'production'
+```
+
+Replace and add imports to handle Vercel DB.
+
+```typescript
+// src/db/index.ts
+import { sql } from '@vercel/postgres'
+import { drizzle as drizzleNode } from 'drizzle-orm/node-postgres'
+import { drizzle as drizzleVercel } from 'drizzle-orm/vercel-postgres'
+
+// replace db with, this way we use local DB for DEV and Vercel DB in PROD
+export const db = isProd ? drizzleVercel(sql) : drizzleNode(client)
+```
+
+## GitHub Actions
