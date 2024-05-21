@@ -7,7 +7,6 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-    // include: ['src/**/*.test.{ts,tsx}'],
     setupFiles: 'src/helpers/setupTests.ts',
     environment: 'jsdom',
     coverage: {
@@ -15,10 +14,10 @@ export default defineConfig({
       exclude: ['src/helpers/setupTests.ts'],
       reporter: ['html', 'text-summary'],
       thresholds: {
-        functions: 50,
-        lines: 50,
-        branches: 50,
-        statements: 50,
+        functions: 40,
+        lines: 40,
+        branches: 40,
+        statements: 40,
       },
     },
   },

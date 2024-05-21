@@ -1,3 +1,7 @@
+# Status
+
+![Tests](https://github.com/abrahamgr/web-app-learning/actions/workflows/test-coverage.yml/badge.svg)
+
 ## Zod
 
 [https://zod.dev/](https://zod.dev/)
