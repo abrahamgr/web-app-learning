@@ -1,5 +1,5 @@
 packages:
   # all students repos
   - repos/**/**/*
-  - web/
+  - web/*
   # - web/04-nextjs

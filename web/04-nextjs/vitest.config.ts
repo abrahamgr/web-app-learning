@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+
 import { defineConfig } from 'vitest/config'
 import path from 'path'
 import react from '@vitejs/plugin-react'
@@ -12,7 +13,7 @@ export default defineConfig({
     coverage: {
       include: ['src/ui/**/*.{ts,tsx}', 'src/helpers/**/*.{ts,tsx}'],
       exclude: ['src/helpers/setupTests.ts'],
-      reporter: ['html', 'text-summary'],
+      reporter: ['html', 'text-summary', 'json'],
       thresholds: {
         functions: 40,
         lines: 40,
