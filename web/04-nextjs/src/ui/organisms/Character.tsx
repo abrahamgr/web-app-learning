@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { Character } from '@/types/character'
+import type { Character } from '@/types/character'
 import starIcon from '@/icons/star.svg'
 import starFilledIcon from '@/icons/star-filled.svg'
 import { setFavoriteAction } from '@/actions/favorites'

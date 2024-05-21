@@ -4,8 +4,8 @@ import { getCurrentFavoriteIds } from '@/helpers/characters'
 import { getAllCharacters } from '@/services/getCharacter'
 import { Characters } from '@/ui/pages/Characters'
 import { Pagination } from '@/ui/molecules/Pagination'
-import { PageProps } from '@/types/page'
-import { Character } from '@/types/character'
+import type { PageProps } from '@/types/page'
+import type { Character } from '@/types/character'
 
 export default async function CharactersPage({ searchParams }: PageProps) {
   const currentPage = searchParams.page ?? '1'

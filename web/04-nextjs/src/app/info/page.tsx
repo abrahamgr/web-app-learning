@@ -1,4 +1,4 @@
-import { PageProps } from '@/types/page'
+import type { PageProps } from '@/types/page'
 
 export default function InfoPage({ searchParams }: PageProps) {
   return (

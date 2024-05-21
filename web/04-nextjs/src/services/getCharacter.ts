@@ -1,7 +1,7 @@
 import { clientConfig } from '@/const/clientConfig'
-import { Character } from '@/types/character'
+import type { Character } from '@/types/character'
 import { endpoints } from '@/const/endpoints'
-import { Result } from '@/types/result'
+import type { Result } from '@/types/result'
 
 export async function getCharacter(id: number): Promise<Character> {
   const response = await fetch(
