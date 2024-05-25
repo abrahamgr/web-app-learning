@@ -6,7 +6,7 @@ const repos = [
   'https://github.com/oznerx/Actividad-Web-1-HTML',
   'https://github.com/adrian-rmz/a00830640-web',
   'https://github.com/RoJosGaRis/01-basic',
-  'https://github.com/Diegogtz03/HTML-class-exercises',
+  // 'https://github.com/Diegogtz03/HTML-class-exercises',
   'https://github.com/pedroalonsoms/html-clases',
   'https://github.com/sofia-cantu/WebLearning',
   'https://github.com/a01721732/TC3005B_A01721732',
@@ -28,9 +28,10 @@ const repos = [
   'https://github.com/Eugenio2002-tec/Eugenio-web',
   'https://github.com/Hugoalv79/WizelineWebClass',
   'https://github.com/lapl13/clase-web',
+  'https://github.com/lapl13/04-nextjs-rick-and-morty.git',
   'https://github.com/Valenriquez/XploreTailwindCSS',
   'https://github.com/SofiRegiM/rick-morty',
-  'https://github.com/AlexMendozaPrado/04-nestjs-rick-and-morty',
+  // 'https://github.com/AlexMendozaPrado/04-nestjs-rick-and-morty',
 ];
 
 module.exports = { repos };

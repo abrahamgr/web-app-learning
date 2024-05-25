@@ -94,3 +94,6 @@
 [submodule "repos/AlexMendozaPrado/04-nestjs-rick-and-morty"]
 	path = repos/AlexMendozaPrado/04-nestjs-rick-and-morty
 	url = https://github.com/AlexMendozaPrado/04-nestjs-rick-and-morty
+[submodule "repos/lapl13/04-nextjs-rick-and-morty.git"]
+	path = repos/lapl13/04-nextjs-rick-and-morty.git
+	url = https://github.com/lapl13/04-nextjs-rick-and-morty.git
