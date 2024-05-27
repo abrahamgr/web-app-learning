@@ -1,0 +1,1 @@
+pnpm --filter=./web/04-nextjs run test:ci

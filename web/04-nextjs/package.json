@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "cy:open": "cypress open",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -16,7 +17,8 @@
     "db:migrate": "drizzle-kit migrate",
     "test": "vitest",
     "test:ci": "vitest run --coverage",
-    "test:ui": "vitest --ui --coverage.enabled=true"
+    "test:ui": "vitest --ui --coverage.enabled=true",
+    "test:cy": "cypress run --browser electron --e2e"
   },
   "dependencies": {
     "@next/env": "^14.2.3",
