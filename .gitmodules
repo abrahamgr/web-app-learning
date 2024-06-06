@@ -97,3 +97,9 @@
 [submodule "repos/lapl13/04-nextjs-rick-and-morty.git"]
 	path = repos/lapl13/04-nextjs-rick-and-morty.git
 	url = https://github.com/lapl13/04-nextjs-rick-and-morty.git
+[submodule "repos/A01411926/rickandmorty"]
+	path = repos/A01411926/rickandmorty
+	url = https://github.com/A01411926/rickandmorty
+[submodule "repos/A01411926/6to-semestre"]
+	path = repos/A01411926/6to-semestre
+	url = https://github.com/A01411926/6to-semestre

@@ -10,6 +10,8 @@ const repos = [
   'https://github.com/pedroalonsoms/html-clases',
   'https://github.com/sofia-cantu/WebLearning',
   'https://github.com/a01721732/TC3005B_A01721732',
+  'https://github.com/A01411926/rickandmorty',
+  'https://github.com/A01411926/6to-semestre',
   'https://github.com/CaroGzzLeal/TC3005B_Web',
   'https://github.com/JoseCSG/html_clases',
   'https://github.com/Fausto420/A01412004moduloweb',
