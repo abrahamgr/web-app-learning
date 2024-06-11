@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react'
 import { CharacterComponent } from './Character'
 import type { Character } from '@/types/character'
 import { getCharacter } from '@/services/getCharacter'
+import { useSession } from 'next-auth/react'
 
 export function ClientCharacter() {
   const [character, setCharacter] = useState<Character | undefined>(undefined)
+  const session = useSession()
 
   useEffect(() => {
     const loadCharacter = async () => {
@@ -17,5 +19,12 @@ export function ClientCharacter() {
   }, [])
 
   if (!character) return null
-  return <CharacterComponent character={character} />
+  return (
+    <>
+      {session.status === 'authenticated' ? (
+        <p>userid: {session.data.user?.id}</p>
+      ) : null}
+      <CharacterComponent character={character} />
+    </>
+  )
 }
