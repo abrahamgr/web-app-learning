@@ -1,0 +1,35 @@
+import { NextAuthConfig } from 'next-auth'
+import { paths } from '@/const/paths'
+
+/**
+ * initial the options to re-use in middleware implementation
+ * we cannot use the same response from NextAuth due to restrictions
+ * middleware has
+ */
+export const nextAuthConfig: NextAuthConfig = {
+  trustHost: true,
+  session: {
+    strategy: 'jwt',
+  },
+  pages: {
+    signIn: paths.signIn,
+    error: paths.signIn,
+    newUser: paths.signUp,
+  },
+  callbacks: {
+    async jwt({ token, user: jwtUser, trigger }) {
+      if (trigger === 'signIn') {
+        token.id = jwtUser.id
+        token.email = jwtUser.email
+        token.picture = jwtUser.image
+      }
+
+      return token
+    },
+    async session({ session, token }) {
+      session.user.id = token.sub as string
+      return session
+    },
+  },
+  providers: [],
+}

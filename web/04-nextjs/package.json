@@ -21,10 +21,12 @@
     "test:cy": "cypress run --browser electron --e2e"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.2.0",
     "@next/env": "^14.2.3",
     "@vercel/postgres": "^0.8.0",
     "drizzle-orm": "^0.30.10",
     "next": "14.2.2",
+    "next-auth": "5.0.0-beta.19",
     "pg": "^8.11.5",
     "pino": "^9.1.0",
     "react": "^18",

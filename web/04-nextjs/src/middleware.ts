@@ -1,26 +1,37 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import NextAuth from 'next-auth'
+import { nextAuthConfig } from '@/auth/options'
+import { paths } from './const/paths'
 
-export function middleware(request: NextRequest) {
+export const middleware = NextAuth(nextAuthConfig).auth((req) => {
   const {
-    nextUrl: { searchParams },
-  } = request
+    nextUrl: { origin, pathname },
+  } = req
 
-  // rewrite by params passed
-  const rewriteUrl = searchParams.get('rewrite')
-  if (rewriteUrl) return NextResponse.rewrite(new URL(rewriteUrl, request.url))
-
-  // set new headers
-  const response = NextResponse.next()
-  const keysIterator = searchParams.keys()
-  let keyItem = keysIterator.next()
-  while (!keyItem.done) {
-    const { value } = keyItem
-    response.headers.set(`X-${value}`, searchParams.get(value) as string)
-    keyItem = keysIterator.next()
+  if (req.auth) {
+    // if already authenticated go to root
+    if (pathname === paths.signIn || pathname === paths.signUp) {
+      const newUrl = new URL(paths.root, origin)
+      return NextResponse.redirect(newUrl)
+    }
+  } else {
+    // redirect to login
+    if (pathname === paths.favoriteCharacter) {
+      const newUrl = new URL(paths.signIn, origin)
+      return NextResponse.redirect(newUrl)
+    }
   }
-  return response
-}
+})
 
 export const config = {
-  matcher: '/info',
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 }

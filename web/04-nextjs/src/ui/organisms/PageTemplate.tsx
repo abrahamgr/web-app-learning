@@ -1,11 +1,11 @@
 import { PropsWithChildren } from 'react'
 import { Main } from '@/ui/atoms/Main'
-// import { Header, Footer } from '@/ui/molecules'
+import { Header } from '@/ui/molecules'
 
 export function PageTemplate({ children }: PropsWithChildren) {
   return (
     <Main>
-      {/* <Header /> */}
+      <Header />
       {children}
       {/* <Footer /> */}
     </Main>
