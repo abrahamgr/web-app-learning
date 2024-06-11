@@ -2,10 +2,17 @@ import { PropsWithChildren } from 'react'
 import { Main } from '@/ui/atoms/Main'
 import { Header } from '@/ui/molecules'
 
-export function PageTemplate({ children }: PropsWithChildren) {
+interface PageTemplateProps extends PropsWithChildren {
+  hideHeader?: boolean
+}
+
+export function PageTemplate({
+  children,
+  hideHeader = false,
+}: PageTemplateProps) {
   return (
     <Main>
-      <Header />
+      {hideHeader ? null : <Header />}
       {children}
       {/* <Footer /> */}
     </Main>

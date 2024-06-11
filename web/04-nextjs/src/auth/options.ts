@@ -17,6 +17,15 @@ export const nextAuthConfig: NextAuthConfig = {
     newUser: paths.signUp,
   },
   callbacks: {
+    authorized({
+      auth,
+      request: {
+        nextUrl: { pathname },
+      },
+    }) {
+      if (pathname === paths.favoriteCharacter) return !!auth?.user
+      return true
+    },
     async jwt({ token, user: jwtUser, trigger }) {
       if (trigger === 'signIn') {
         token.id = jwtUser.id

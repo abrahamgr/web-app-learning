@@ -18,6 +18,7 @@ export const favorites = pgTable('favorites', {
 export type FavoritesSelect = typeof favorites.$inferSelect
 export type FavoritesInsert = typeof favorites.$inferInsert
 
+/** Auth */
 export const users = pgTable('user', {
   id: text('id')
     .primaryKey()
@@ -28,8 +29,6 @@ export const users = pgTable('user', {
   emailVerified: timestamp('emailVerified', { mode: 'date' }),
   image: text('image'),
 })
-
-/** Auth */
 
 export const accounts = pgTable(
   'account',
