@@ -5,12 +5,23 @@ import { TextField } from '@/ui/atoms/TextField'
 import Link from 'next/link'
 import { paths } from '@/const/paths'
 import { login } from '@/actions/auth'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
+import { logger } from '@/utilities/logger'
 
 interface SignInProps {
   callbackUrl?: string
 }
 
-export async function SignIn({}: SignInProps) {
+export async function SignIn({ callbackUrl }: SignInProps) {
+  const session = await auth()
+  if (session?.user && callbackUrl) {
+    if (new URL(callbackUrl).pathname !== paths.signIn) {
+      logger.info({ callbackUrl }, 'redirect from login')
+      redirect(callbackUrl)
+    } else redirect(paths.root)
+  }
+
   return (
     <Form className='*:mb-3 *:flex' action={login}>
       <Label>

@@ -5,7 +5,6 @@ import { paths } from '@/const/paths'
 import { userExists, registerUser } from '@/data/auth'
 import { hashPassword } from '@/utilities/crypto'
 import { logger } from '@/utilities/logger'
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export async function signUp(
@@ -28,8 +27,25 @@ export async function logOut() {
 }
 
 export async function login(formData: FormData) {
-  await signIn('credentials', formData)
-  const callbackUrl = cookies().get('authjs.callback-url')?.value ?? paths.root
-  logger.info({ callbackUrl }, 'redirecting to')
-  redirect(callbackUrl)
+  const options = {
+    ...Object.fromEntries(formData),
+    redirect: false,
+  }
+  logger.info(options, 'signin')
+  let callbackUrl = ''
+  try {
+    callbackUrl = await signIn('credentials', options)
+  } catch (error) {
+    logger.error(error, 'login')
+    throw new Error('unable to login')
+  } finally {
+    // redirect must be in the finally to avoid error 'NEXT_REDIRECT'
+    if (callbackUrl) {
+      const callbackUrlValue = new URL(callbackUrl).searchParams.get(
+        'callbackUrl',
+      )
+      logger.info({ callbackUrlValue }, 'callback redirect')
+      if (callbackUrlValue) redirect(callbackUrl)
+    }
+  }
 }

@@ -5,16 +5,19 @@ import { signInSchema } from '@/schema/auth'
 import { db } from '@/db'
 import { findUserByEmailAndPassword } from '@/data/auth'
 import { nextAuthConfig } from '@/auth/options'
+import { logger } from '@/utilities/logger'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...nextAuthConfig,
   adapter: DrizzleAdapter(db),
   providers: [
     Credentials({
+      // define fields to render if you plan to use native signin page
       credentials: {
-        email: {},
-        password: {},
+        email: { label: 'Email' },
+        password: { label: 'Password', type: 'password' },
       },
+      type: 'credentials',
       authorize: async (credentials) => {
         const { success, data } = signInSchema.safeParse(credentials)
 
@@ -23,4 +26,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  logger: {
+    error(code, ...message) {
+      logger.error(code, JSON.stringify(message))
+    },
+    warn(code, ...message) {
+      logger.warn(code, message)
+    },
+  },
 })

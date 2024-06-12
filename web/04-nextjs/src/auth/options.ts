@@ -7,13 +7,13 @@ import { paths } from '@/const/paths'
  * middleware has
  */
 export const nextAuthConfig: NextAuthConfig = {
-  trustHost: true,
+  // trustHost: true,
+  debug: process.env.NODE_ENV !== 'production',
   session: {
     strategy: 'jwt',
   },
   pages: {
     signIn: paths.signIn,
-    error: paths.signIn,
     newUser: paths.signUp,
   },
   callbacks: {
