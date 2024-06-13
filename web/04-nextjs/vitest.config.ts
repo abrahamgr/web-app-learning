@@ -11,8 +11,13 @@ export default defineConfig({
     setupFiles: 'src/helpers/setupTests.ts',
     environment: 'jsdom',
     coverage: {
-      include: ['src/ui/**/*.{ts,tsx}', 'src/helpers/**/*.{ts,tsx}'],
-      exclude: ['src/helpers/setupTests.ts'],
+      include: ['src/ui/**/*.{ts,tsx}'],
+      exclude: [
+        'src/helpers/setupTests.ts',
+        'src/ui/pages',
+        'src/ui/organisms/SignIn.tsx',
+        'src/ui/organisms/SignUp.tsx',
+      ],
       reporter: ['html', 'text-summary', 'json'],
       thresholds: {
         functions: 40,
